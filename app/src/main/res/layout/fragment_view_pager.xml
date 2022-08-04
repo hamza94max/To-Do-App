@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="8dp"
+    tools:context=".ui.ViewPagerFragment.ViewPagerFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:id="@+id/todoTab"
+                android:layout_width="90dp"
+                android:layout_height="45dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="8dp"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/btn_blue_shape"
+                android:padding="7dp"
+                android:text="@string/todo"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/completedTab"
+                android:layout_width="124dp"
+                android:layout_height="45dp"
+                android:layout_alignParentTop="true"
+                android:layout_margin="8dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_toEndOf="@id/todoTab"
+                android:background="@drawable/btn_white_shape"
+                android:padding="7dp"
+                android:text="@string/complete"
+                android:textColor="@color/tab_color" />
+
+            <Button
+                android:id="@+id/overdueTab"
+                android:layout_width="114dp"
+                android:layout_height="45dp"
+                android:layout_alignParentTop="true"
+                android:layout_margin="8dp"
+                android:layout_toEndOf="@id/completedTab"
+                android:background="@drawable/btn_white_shape"
+                android:padding="7dp"
+                android:text="@string/overdue"
+                android:textColor="@color/tab_color" />
+
+        </RelativeLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tabs"
+            android:layout_marginTop="8dp" />
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

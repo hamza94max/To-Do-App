@@ -6,7 +6,7 @@
         <item name="postSplashScreenTheme">@style/Theme.ToDoApp</item>
     </style>
 
-    <style name="Theme.ToDoApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.ToDoApp" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/blue</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
