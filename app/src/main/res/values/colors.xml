@@ -11,6 +11,9 @@
     <color name="blue">#2E3A59</color>
 
     <color name="tab_color">#992E3A59</color>
+    <color name="green">#00B894</color>
+
+    <color name="green_light">#88D1C3</color>
 
 
 </resources>

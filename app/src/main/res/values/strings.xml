@@ -6,4 +6,6 @@
     <string name="todo">ToDo</string>
     <string name="complete">Complete</string>
     <string name="overdue">Overdue</string>
+    <string name="time">10:30 PM</string>
+    <string name="reminder_on">Reminder on!</string>
 </resources>
