@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="338dp"
+    android:layout_height="499dp"
+    android:layout_gravity="center"
+    android:padding="7dp"
+    app:cardCornerRadius="14dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:padding="14dp"
+        tools:ignore="UseSwitchCompatOrMaterialXml">
+
+        <TextView
+            android:id="@+id/AddTaskTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:lineHeight="27sp"
+            android:text="@string/add_task"
+            android:textColor="@color/blue"
+            android:textSize="18sp"
+            tools:targetApi="p" />
+
+        <EditText
+            android:id="@+id/whatsTaskEditText"
+            android:layout_width="303dp"
+            android:layout_height="56dp"
+            android:layout_below="@id/AddTaskTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edittext_shape"
+            android:hint="@string/what_s_the_task"
+            android:inputType="textAutoCorrect"
+            android:padding="7dp" />
+
+        <EditText
+            android:id="@+id/dateOfTaskEditText"
+            android:layout_width="140dp"
+            android:layout_height="56dp"
+            android:layout_below="@id/whatsTaskEditText"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edittext_shape"
+            android:hint="@string/date"
+            android:inputType="date"
+            android:padding="7dp"
+            android:pointerIcon="arrow"
+            tools:targetApi="n" />
+
+        <EditText
+            android:id="@+id/timeOfTaskEditText"
+            android:layout_width="140dp"
+            android:layout_height="56dp"
+            android:layout_below="@id/whatsTaskEditText"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="14dp"
+            android:layout_toEndOf="@id/dateOfTaskEditText"
+            android:background="@drawable/edittext_shape"
+            android:hint="@string/timeOfTask"
+            android:inputType="time"
+            android:padding="7dp"
+            android:pointerIcon="arrow"
+            tools:targetApi="n" />
+
+        <View
+            android:id="@+id/line_1"
+            android:layout_width="304dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/dateOfTaskEditText"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/line_1" />
+
+        <TextView
+            android:id="@+id/setPriorityTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line_1"
+            android:layout_alignStart="@+id/dateOfTaskEditText"
+            android:layout_marginStart="-14dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/set_priority"
+            android:textColor="@color/blue"
+            android:textSize="14sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/setPriorityTextView"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/lowRadiobtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:padding="2dp"
+                android:shadowColor="@color/green_light"
+                android:text="@string/low"
+                android:textColor="@color/green_light"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/mediumRadiobtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:padding="2dp"
+                android:shadowColor="@color/orange_light"
+                android:text="@string/medium"
+                android:textColor="@color/orange_light"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/highRadiobtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:padding="2dp"
+                android:shadowColor="@color/red_light"
+                android:text="@string/high"
+                android:textColor="@color/red_light"
+                android:textSize="13sp" />
+
+        </RadioGroup>
+
+        <View
+            android:id="@+id/line_2"
+            android:layout_width="304dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/radioGroup"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/line_1" />
+
+        <Switch
+            android:id="@+id/remiderSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line_2"
+            android:fontFamily="@font/poppins_semibold"
+            android:shadowColor="@color/blue_light"
+            android:text="@string/remind_me_for_this_task"
+            android:textColor="@color/blue"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="140dp"
+            android:layout_height="49dp"
+            android:layout_below="@id/remiderSwitch"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="64dp"
+            android:background="@drawable/cancel_shape"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:textColor="@color/blue_light"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/addBtn"
+            android:layout_width="140dp"
+            android:layout_height="49dp"
+            android:layout_below="@id/remiderSwitch"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="64dp"
+            android:layout_toEndOf="@id/cancelBtn"
+            android:background="@drawable/add_btn_shape"
+            android:text="@string/add"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+
