@@ -37,7 +37,6 @@
             android:textColor="#2E3A59"
             android:textSize="16sp" />
 
-
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_host_fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
@@ -46,6 +45,20 @@
             android:layout_below="@id/dateOfDayTextView"
             app:defaultNavHost="true"
             app:navGraph="@navigation/nav_graph" />
+
+        <Button
+            android:id="@+id/insertTaskbtn"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/plus_btn"
+            android:text="+"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

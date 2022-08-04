@@ -47,6 +47,10 @@ dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.0'
 
 
+    // recyclerView
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+
+
     // Navigation
     def nav_version = "2.5.1"
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
@@ -55,6 +59,7 @@ dependencies {
     def roomVersion = "2.4.3"
     implementation("androidx.room:room-runtime:$roomVersion")
     kapt("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
 
 
     testImplementation 'junit:junit:4.13.2'

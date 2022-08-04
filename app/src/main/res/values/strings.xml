@@ -8,4 +8,15 @@
     <string name="overdue">Overdue</string>
     <string name="time">10:30 PM</string>
     <string name="reminder_on">Reminder on!</string>
+    <string name="add_task">Add Task</string>
+    <string name="what_s_the_task">What\'s the task?</string>
+    <string name="date">Date</string>
+    <string name="timeOfTask">Time</string>
+    <string name="set_priority">Set Priority</string>
+    <string name="low">Low</string>
+    <string name="medium">Medium</string>
+    <string name="high">High</string>
+    <string name="remind_me_for_this_task">Remind me for this task</string>
+    <string name="cancel">Cancel</string>
+    <string name="add">Add</string>
 </resources>
