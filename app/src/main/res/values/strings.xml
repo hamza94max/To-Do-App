@@ -19,4 +19,6 @@
     <string name="remind_me_for_this_task">Remind me for this task</string>
     <string name="cancel">Cancel</string>
     <string name="add">Add</string>
+    <string name="no_task_to_do">No task to do!</string>
+    <string name="tapToAddTask">Tap the  "+"  icon below to add a new task!</string>
 </resources>

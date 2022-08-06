@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".ui.ToDoFragment.ToDoFragment">
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/todoRecyclerView"
@@ -12,6 +12,19 @@
         android:layout_height="match_parent"
         android:padding="7dp"
         tools:listitem="@layout/task_item" />
+
+    <RelativeLayout
+        android:id="@+id/noTaskLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <include
+            layout="@layout/no_task_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="7dp" />
+    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

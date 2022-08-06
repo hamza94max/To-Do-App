@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.hamza.todoapp.Data.Models.Task
 import com.hamza.todoapp.databinding.FragmentTodoBinding
 
 class ToDoFragment : Fragment() {
@@ -38,7 +39,13 @@ class ToDoFragment : Fragment() {
     private fun observeToLiveData() {
         todoViewModel.getAllTasks.observe(viewLifecycleOwner) { tasks ->
             todoAdapter.differ.submitList(tasks.reversed())
+            removeNoTaskLayout(tasks)
         }
+    }
+
+    private fun removeNoTaskLayout(tasks: List<Task>?) {
+        if (tasks!!.isEmpty()) binding.noTaskLayout.visibility = View.VISIBLE
+        else binding.noTaskLayout.visibility = View.GONE
     }
 
     fun setUpRecylcerView() {

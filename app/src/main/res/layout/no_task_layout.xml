@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="7dp">
+
+        <ImageView
+            android:id="@+id/noTaskImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="48dp"
+            android:src="@drawable/notask" />
+
+        <TextView
+            android:id="@+id/noTaskTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/noTaskImageView"
+            android:layout_alignStart="@+id/noTaskImageView"
+            android:layout_alignEnd="@+id/noTaskImageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="-16dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:padding="2dp"
+            android:text="@string/no_task_to_do"
+            android:textColor="@color/blue"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/noTaskTextView"
+            android:layout_marginStart="64dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="@string/tapToAddTask"
+            android:textColor="@color/blue"
+            android:textSize="14sp" />
+
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,8 +12,9 @@
     <color name="blue_light">#376EFB</color>
     <color name="tab_color">#992E3A59</color>
     <color name="green">#00B894</color>
-
     <color name="green_light">#88D1C3</color>
+
+    <color name="background">#E5E5E5</color>
 
     // radio group
     <color name="orange_light">#F8AA4E</color>
