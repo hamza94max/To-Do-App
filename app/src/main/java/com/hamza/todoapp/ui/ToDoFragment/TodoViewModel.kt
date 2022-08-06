@@ -25,5 +25,11 @@ class TodoViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun deleteAllTasks() {
+        viewModelScope.launch {
+            repository.deleteAllTasks()
+        }
+    }
+
 
 }

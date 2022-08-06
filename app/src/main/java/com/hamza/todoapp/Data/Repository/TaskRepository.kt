@@ -18,5 +18,7 @@ class TaskRepository(application: Application) {
 
     suspend fun deleteTask(task: Task) = dao.deleteTask(task)
 
+    suspend fun deleteAllTasks() = dao.deleteAllTasks()
+
 
 }

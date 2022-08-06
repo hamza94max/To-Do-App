@@ -7,10 +7,10 @@ import java.io.Serializable
 @Entity(tableName = "Tasks")
 data class Task(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Int? = null,
     val title: String,
     val date: String,
     val time: String,
-    val priority: Int,
+    val priority: Priority,
     val isReminder: Boolean
 ) : Serializable

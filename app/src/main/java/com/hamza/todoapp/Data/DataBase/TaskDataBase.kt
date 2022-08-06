@@ -9,7 +9,7 @@ import com.hamza.todoapp.Data.Models.Task
 
 @Database(
     entities = [Task::class],
-    version = 1
+    version = 3
 )
 abstract class TaskDataBase : RoomDatabase() {
 
@@ -32,7 +32,9 @@ abstract class TaskDataBase : RoomDatabase() {
                 context.applicationContext,
                 TaskDataBase::class.java,
                 "Task_db"
-            ).build()
+            )
+                .fallbackToDestructiveMigration()
+                .build()
 
 
     }
