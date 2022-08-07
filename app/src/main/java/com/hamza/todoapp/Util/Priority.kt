@@ -1,4 +1,4 @@
-package com.hamza.todoapp.Data.Models
+package com.hamza.todoapp.Util
 
 enum class Priority {
     LOW,

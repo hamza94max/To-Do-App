@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.hamza.todoapp.Data.Models.Priority
 import com.hamza.todoapp.Data.Models.Task
 import com.hamza.todoapp.R
+import com.hamza.todoapp.Util.Priority
 import com.hamza.todoapp.databinding.TaskItemBinding
 
-class TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
+class TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(), OnCheckBtnClickListener {
 
     inner class TodoViewHolder(val binding: TaskItemBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -52,10 +52,24 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
         else if (currentItem.priority == Priority.HIGH)
             holder.binding.taskPriority.setBackgroundResource(R.drawable.priority_high)
 
+        holder.binding.checkbox.setOnClickListener {
+            listener!!.OnCheckBtnClicked(differ.currentList[position])
+        }
+
 
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
+    }
+
+    fun setOnCheckBtnClickListener(listener: OnCheckBtnClickListener) {
+        TodoAdapter.listener = listener
+    }
+
+    override fun OnCheckBtnClicked(task: Task) {}
+
+    companion object {
+        var listener: OnCheckBtnClickListener? = null
     }
 }

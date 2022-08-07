@@ -1,4 +1,4 @@
-package com.hamza.todoapp.ui
+package com.hamza.todoapp.ui.Dialog
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -12,9 +12,9 @@ import android.view.Window
 import android.widget.*
 import androidx.core.view.isEmpty
 import androidx.fragment.app.DialogFragment
-import com.hamza.todoapp.Data.Models.Priority
 import com.hamza.todoapp.Data.Models.Task
 import com.hamza.todoapp.R
+import com.hamza.todoapp.Util.Priority
 import java.util.*
 
 

@@ -28,6 +28,7 @@
                 android:background="@drawable/btn_blue_shape"
                 android:padding="7dp"
                 android:text="@string/todo"
+                android:textAllCaps="false"
                 android:textColor="@color/white" />
 
             <Button
@@ -40,6 +41,7 @@
                 android:layout_toEndOf="@id/todoTab"
                 android:background="@drawable/btn_white_shape"
                 android:padding="7dp"
+                android:textAllCaps="false"
                 android:text="@string/complete"
                 android:textColor="@color/tab_color" />
 
@@ -52,6 +54,7 @@
                 android:layout_toEndOf="@id/completedTab"
                 android:background="@drawable/btn_white_shape"
                 android:padding="7dp"
+                android:textAllCaps="false"
                 android:text="@string/overdue"
                 android:textColor="@color/tab_color" />
 

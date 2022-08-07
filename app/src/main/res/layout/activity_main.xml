@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".ui.MainActivity">
 
     <RelativeLayout
@@ -31,6 +32,7 @@
             android:layout_below="@id/todolistTextView"
             android:layout_alignStart="@id/todolistTextView"
             android:fontFamily="@font/poppins_light"
+            android:textAllCaps="false"
             android:paddingHorizontal="7dp"
             android:paddingBottom="7dp"
             android:text="@string/dateOfDay"
