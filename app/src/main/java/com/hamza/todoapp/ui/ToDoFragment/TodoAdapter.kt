@@ -12,7 +12,7 @@ import com.hamza.todoapp.R
 import com.hamza.todoapp.Util.Priority
 import com.hamza.todoapp.databinding.TaskItemBinding
 
-class TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(), OnCheckBtnClickListener {
+class TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(), OnCheckBoxClickListener {
 
     inner class TodoViewHolder(val binding: TaskItemBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -37,9 +37,8 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(), OnCheckB
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: TodoAdapter.TodoViewHolder, position: Int) {
+
         val currentItem = differ.currentList[position]
-
-
 
         holder.binding.taskTitle.text = currentItem.title
         holder.binding.timeTextView.text = currentItem.time
@@ -63,13 +62,13 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(), OnCheckB
         return differ.currentList.size
     }
 
-    fun setOnCheckBtnClickListener(listener: OnCheckBtnClickListener) {
+    fun setOnCheckBtnClickListener(listener: OnCheckBoxClickListener) {
         TodoAdapter.listener = listener
     }
 
     override fun OnCheckBtnClicked(task: Task) {}
 
     companion object {
-        var listener: OnCheckBtnClickListener? = null
+        var listener: OnCheckBoxClickListener? = null
     }
 }

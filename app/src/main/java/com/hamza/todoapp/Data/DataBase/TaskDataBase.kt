@@ -9,7 +9,7 @@ import com.hamza.todoapp.Data.Models.Task
 
 @Database(
     entities = [Task::class],
-    version = 3
+    version = 4
 )
 abstract class TaskDataBase : RoomDatabase() {
 

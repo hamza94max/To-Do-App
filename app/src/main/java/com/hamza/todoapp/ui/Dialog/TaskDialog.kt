@@ -1,5 +1,6 @@
 package com.hamza.todoapp.ui.Dialog
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -28,6 +29,7 @@ class TaskDialog : DialogFragment() {
     lateinit var listener: OnInputListener
     private lateinit var priority: Priority
 
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -57,6 +59,8 @@ class TaskDialog : DialogFragment() {
 
         val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
 
+        val reminderSwitch = view.findViewById<Switch>(R.id.reminderSwitch)
+
 
         val addBtn = view.findViewById<Button>(com.hamza.todoapp.R.id.addBtn)
         addBtn.setOnClickListener {
@@ -71,12 +75,11 @@ class TaskDialog : DialogFragment() {
                     R.id.highRadiobtn -> priority = Priority.HIGH
                 }
                 val task = Task(
-                    2,
                     title.text.toString(),
                     date.text.toString(),
                     timeEditText.text.toString(),
                     priority,
-                    false
+                    reminderSwitch.isChecked
                 )
                 listener.sendInput(task)
                 dialog!!.dismiss()
@@ -109,8 +112,9 @@ class TaskDialog : DialogFragment() {
         val datePickerDialog = DatePickerDialog(
             activity,
             { view: DatePicker?, year: Int, monthOfYear: Int, dayOfMonth: Int ->
-                val selectedDate =
-                    dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year
+                var selectedDate = dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year
+                if (monthOfYear + 1 < 10) selectedDate =
+                    dayOfMonth.toString() + "/" + "0" + (monthOfYear + 1) + "/" + year
                 when (v.id) {
                     R.id.dateOfTaskEditText -> (v as EditText).setText(selectedDate)
                 }
@@ -121,12 +125,12 @@ class TaskDialog : DialogFragment() {
     }
 
     private fun showTimePicker(view: View, activity: Activity) {
-        val mcurrentTime = Calendar.getInstance()
-        val hour = mcurrentTime[Calendar.HOUR_OF_DAY]
-        val minute = mcurrentTime[Calendar.MINUTE]
+        val currentTime = Calendar.getInstance()
+        val hour = currentTime[Calendar.HOUR_OF_DAY]
+        val minute = currentTime[Calendar.MINUTE]
         val timePickerDialog = TimePickerDialog(
             activity, { timePicker, selectedHour, selectedMinute ->
-                val selectedTime = "$hour:$minute"
+                val selectedTime = "$selectedHour:$selectedMinute"
                 when (view.id) {
                     R.id.timeOfTaskEditText -> (view as EditText).setText(selectedTime)
                 }

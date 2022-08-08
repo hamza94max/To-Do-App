@@ -24,14 +24,13 @@
                 android:layout_height="20dp"
                 android:layout_margin="8dp"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/no_priority" />
+                android:background="@drawable/priority_low" />
 
             <TextView
                 android:id="@+id/taskTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/taskPriority"
-                android:background="@drawable/striking_text"
                 android:fontFamily="@font/poppins_semibold"
                 android:padding="7dp"
                 android:text="Task title"
@@ -44,11 +43,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_margin="8dp"
-                android:clickable="true"
-                android:focusable="false"
-                android:text=""
                 android:button="@drawable/unchecked"
-                android:checked="true" />
+                android:checked="true"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="" />
 
         </RelativeLayout>
 
@@ -65,7 +64,7 @@
                 android:layout_marginStart="2dp"
                 android:layout_marginTop="-8dp"
                 android:padding="7dp"
-                android:src="@drawable/ic_baseline_calendar_month_24" />
+                android:src="@drawable/calendarview_overdue" />
 
             <TextView
                 android:id="@+id/dateOfDayTextView"
@@ -83,7 +82,7 @@
                 android:layout_below="@id/calendarView"
                 android:layout_marginStart="2dp"
                 android:padding="7dp"
-                android:src="@drawable/ic_baseline_access_time_24" />
+                android:src="@drawable/timeview_overdue" />
 
             <TextView
                 android:id="@+id/timeTextView"
@@ -95,6 +94,35 @@
                 android:padding="2dp"
                 android:text="@string/time" />
 
+            <RelativeLayout
+                android:id="@+id/reminderView"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@id/dateOfDayTextView"
+                android:layout_marginStart="140dp"
+                android:layout_toEndOf="@id/timeTextView"
+                android:background="@drawable/reminder_shape"
+                android:padding="7dp">
+
+                <ImageView
+                    android:id="@+id/alarmView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_toStartOf="@id/reminderTextView"
+                    android:src="@drawable/ic_baseline_alarm_24" />
+
+                <TextView
+                    android:id="@+id/reminderTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="2dp"
+                    android:text="@string/reminder_on"
+                    android:textColor="@color/green" />
+
+
+            </RelativeLayout>
 
         </RelativeLayout>
 

@@ -8,10 +8,15 @@ import java.io.Serializable
 @Entity(tableName = "Tasks")
 data class Task(
     @PrimaryKey(autoGenerate = true)
-    val id: Int? = null,
-    val title: String,
+    val id: Int,
+    var title: String,
     val date: String,
     val time: String,
     val priority: Priority,
-    val isReminder: Boolean
-) : Serializable
+    var isReminder: Boolean
+) : Serializable {
+    constructor(title: String, date: String, time: String, priority: Priority, isReminder: Boolean)
+            : this(0, title, date, time, priority, isReminder)
+
+
+}

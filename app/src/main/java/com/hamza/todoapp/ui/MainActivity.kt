@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(), TaskDialog.OnInputListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel.deleteAllTasks()
+        //viewModel.deleteAllTasks()
 
         val dayName = LocalDate.now().dayOfWeek.name
         val year = LocalDate.now().year

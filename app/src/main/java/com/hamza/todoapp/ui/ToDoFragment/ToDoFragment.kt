@@ -1,17 +1,22 @@
 package com.hamza.todoapp.ui.ToDoFragment
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hamza.todoapp.Data.Models.Task
+import com.hamza.todoapp.Util.DateChecker.getDifferentDays
+import com.hamza.todoapp.Util.TimeChecker.checkTime
 import com.hamza.todoapp.databinding.FragmentTodoBinding
 import com.hamza.todoapp.ui.CompletedFragment.CompletedTaskViewModel
 
+@RequiresApi(Build.VERSION_CODES.O)
 class ToDoFragment : Fragment() {
 
     private var _binding: FragmentTodoBinding? = null
@@ -33,11 +38,11 @@ class ToDoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setUpRecylcerView()
+        setUpRecyclerView()
 
         observeToLiveData()
 
-        todoAdapter.setOnCheckBtnClickListener(object : OnCheckBtnClickListener {
+        todoAdapter.setOnCheckBtnClickListener(object : OnCheckBoxClickListener {
             override fun OnCheckBtnClicked(task: Task) {
                 todoViewModel.deleteTask(task)
                 completedTaskViewModel.insertCompletedTask(task)
@@ -48,9 +53,19 @@ class ToDoFragment : Fragment() {
 
     }
 
+    private fun setUpRecyclerView() {
+        binding.todoRecyclerView.apply {
+            todoAdapter = TodoAdapter()
+            layoutManager = LinearLayoutManager(context)
+            adapter = todoAdapter
+        }
+    }
+
     private fun observeToLiveData() {
         todoViewModel.getAllTasks.observe(viewLifecycleOwner) { tasks ->
-            todoAdapter.differ.submitList(tasks.reversed())
+            todoAdapter.differ.submitList(tasks.reversed().filter {
+                getDifferentDays(it.date) > 0 || (getDifferentDays(it.date) == 0 && checkTime(it.time))
+            })
             removeNoTaskLayout(tasks)
         }
     }
@@ -60,11 +75,5 @@ class ToDoFragment : Fragment() {
         else binding.noTaskLayout.visibility = View.GONE
     }
 
-    private fun setUpRecylcerView() {
-        binding.todoRecyclerView.apply {
-            todoAdapter = TodoAdapter()
-            layoutManager = LinearLayoutManager(context)
-            adapter = todoAdapter
-        }
-    }
+
 }
