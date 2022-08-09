@@ -12,6 +12,7 @@ android {
         applicationId "com.hamza.todoapp"
         minSdk 21
         targetSdk 32
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
 
@@ -74,6 +75,10 @@ dependencies {
 
     // Detekt
     //detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.18.1"
+
+
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.1'
+    implementation 'androidx.multidex:multidex:2.0.1'
 
 
     // Test

@@ -41,13 +41,14 @@
             <CheckBox
                 android:id="@+id/checkbox"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_alignParentEnd="true"
                 android:layout_margin="8dp"
-                android:clickable="true"
-                android:focusable="false"
+                android:button="@drawable/checked"
+                android:clickable="false"
+                android:focusable="true"
                 android:text=""
-                android:button="@drawable/unchecked"
+                android:padding="7dp"
                 android:checked="true" />
 
         </RelativeLayout>

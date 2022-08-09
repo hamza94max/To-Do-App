@@ -10,7 +10,7 @@
         android:icon="@drawable/splash"
         android:label="@string/app_name"
         android:roundIcon="@drawable/splash"
-        android:supportsRtl="true"
+        android:supportsRtl="false"
         android:theme="@style/Theme.App.Starting"
         tools:targetApi="31">
         <activity

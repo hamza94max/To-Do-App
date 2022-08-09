@@ -1,5 +1,6 @@
 package com.hamza.todoapp.ui
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -8,16 +9,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.hamza.todoapp.Data.Models.Task
 import com.hamza.todoapp.databinding.ActivityMainBinding
-import com.hamza.todoapp.ui.Dialog.TaskDialog
+import com.hamza.todoapp.ui.Dialog.AddTaskDialog
 import com.hamza.todoapp.ui.ToDoFragment.TodoViewModel
-import java.time.LocalDate
+import com.jakewharton.threetenabp.AndroidThreeTen
+import org.threeten.bp.LocalDate
 
-class MainActivity : AppCompatActivity(), TaskDialog.OnInputListener {
+class MainActivity : AppCompatActivity(), AddTaskDialog.OnInputListener {
     private lateinit var binding: ActivityMainBinding
 
     private val viewModel: TodoViewModel by viewModels()
     private lateinit var task: Task
 
+    @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         val splash = installSplashScreen()
@@ -25,18 +28,17 @@ class MainActivity : AppCompatActivity(), TaskDialog.OnInputListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //viewModel.deleteAllTasks()
-
-        val dayName = LocalDate.now().dayOfWeek.name
-        val year = LocalDate.now().year
-        val month = LocalDate.now().month
+        AndroidThreeTen.init(this)
+        val today: LocalDate = LocalDate.now()
+        val dayName = today.dayOfWeek.name
+        val year = today.year
+        val month = today.month
         binding.dateOfDayTextView.text = "$dayName, $month, $year"
 
         binding.insertTaskbtn.setOnClickListener {
-            val taskDialog: TaskDialog = TaskDialog()
-            taskDialog.show(supportFragmentManager, "tag")
+            val addTaskDialog: AddTaskDialog = AddTaskDialog()
+            addTaskDialog.show(supportFragmentManager, "tag")
         }
-
 
     }
 

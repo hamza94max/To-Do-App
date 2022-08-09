@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="500dp"
-    android:minHeight="520dp"
+    android:minHeight="480dp"
     android:layout_gravity="center"
     android:padding="7dp">
 
@@ -44,8 +44,8 @@
             android:layout_width="140dp"
             android:layout_height="56dp"
             android:layout_below="@id/whatsTaskEditText"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="14dp"
+            android:layout_alignStart="@+id/whatsTaskEditText"
+            android:layout_marginStart="0dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/edittext_shape"
             android:clickable="false"
@@ -59,14 +59,14 @@
             android:layout_width="140dp"
             android:layout_height="56dp"
             android:layout_below="@id/whatsTaskEditText"
-            android:clickable="false"
-            android:focusable="false"
-            android:layout_alignParentEnd="true"
+            android:layout_alignEnd="@+id/whatsTaskEditText"
             android:layout_marginStart="14dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="14dp"
+            android:layout_marginEnd="0dp"
             android:layout_toEndOf="@id/dateOfTaskEditText"
             android:background="@drawable/edittext_shape"
+            android:clickable="false"
+            android:focusable="false"
             android:hint="@string/timeOfTask"
             android:padding="7dp"
             android:pointerIcon="arrow"
@@ -156,6 +156,7 @@
             android:fontFamily="@font/poppins_semibold"
             android:shadowColor="@color/blue_light"
             android:text="@string/remind_me_for_this_task"
+            android:textStyle="bold"
             android:textColor="@color/blue"
             android:textSize="16sp" />
 
@@ -163,13 +164,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/reminderSwitch"
-            android:layout_marginHorizontal="8dp"
             android:layout_marginTop="32dp"
             android:padding="7dp">
 
             <Button
                 android:id="@+id/cancelBtn"
-                android:layout_width="140dp"
+                android:layout_width="120dp"
                 android:layout_height="49dp"
                 android:layout_marginHorizontal="8dp"
                 android:background="@drawable/cancel_shape"
@@ -180,7 +180,7 @@
 
             <Button
                 android:id="@+id/addBtn"
-                android:layout_width="140dp"
+                android:layout_width="120dp"
                 android:layout_height="49dp"
                 android:layout_marginHorizontal="8dp"
                 android:layout_toEndOf="@id/cancelBtn"

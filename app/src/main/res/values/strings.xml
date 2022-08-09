@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">ToDo App</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="todo_list">Todo List</string>
+    <string name="todo_list">Pronto Todo List</string>
     <string name="dateOfDay">Monday, 25 July, 2022</string>
     <string name="todo">ToDo</string>
     <string name="complete">Complete</string>

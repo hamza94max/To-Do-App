@@ -19,7 +19,7 @@ import com.hamza.todoapp.Util.Priority
 import java.util.*
 
 
-class TaskDialog : DialogFragment() {
+class AddTaskDialog : DialogFragment() {
 
 
     interface OnInputListener {
