@@ -32,8 +32,18 @@ The architecture of this application relies and complies with the following poin
   - [Room](https://developer.android.com/topic/libraries/architecture/room) - Access your app's SQLite database with in-app objects and compile-time checks.
   - [Navigation Components](https://developer.android.com/guide/navigation) - the interactions that allow users to navigate across, into, and back out from the different pieces of content within your app
 * [Fragment](https://developer.android.com/guide/components/fragments)
+* [View Binding](https://developer.android.com/topic/libraries/view-binding) - more easily write code that interacts with views.
 * [LeakCanary](https://square.github.io/leakcanary) - memory leak detection library for Android.
+* [detekt](https://github.com/detekt/detekt) - Static code analysis for Kotlin.
 * [Unit Testing](https://developer.android.com/training/testing/local-tests) - Build local unit tests.
+
+
+## memory Leaks 
+<img src = "https://user-images.githubusercontent.com/54688005/183884029-b9b53946-9cad-4097-9b04-463e12366f22.PNG" width = "75%">
+
+
+## Unit Testing 
+<img src = "https://user-images.githubusercontent.com/54688005/183884276-ffdeb29d-785c-430f-b62e-b924528d0e05.PNG" width = "75%">
 
 
 # How to install and run the project.
