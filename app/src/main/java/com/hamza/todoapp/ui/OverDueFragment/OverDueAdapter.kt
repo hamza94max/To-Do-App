@@ -25,7 +25,6 @@ class OverDueAdapter : RecyclerView.Adapter<OverDueAdapter.OverDueViewHolder>() 
         override fun areContentsTheSame(oldItem: Task, newItem: Task): Boolean {
             return oldItem == newItem
         }
-
     }
 
     var differ = AsyncListDiffer(this, diffCallback)
@@ -53,11 +52,9 @@ class OverDueAdapter : RecyclerView.Adapter<OverDueAdapter.OverDueViewHolder>() 
             holder.binding.taskPriority.setBackgroundResource(R.drawable.priority_medium)
         else if (currentItem.priority == Priority.HIGH)
             holder.binding.taskPriority.setBackgroundResource(R.drawable.priority_high)
-
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
-
 }

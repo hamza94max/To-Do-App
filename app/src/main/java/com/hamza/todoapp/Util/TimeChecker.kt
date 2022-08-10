@@ -6,7 +6,6 @@ import androidx.annotation.RequiresApi
 import org.threeten.bp.LocalTime
 import java.text.SimpleDateFormat
 
-
 object TimeChecker {
 
     @SuppressLint("SimpleDateFormat")
@@ -20,9 +19,6 @@ object TimeChecker {
 
         if (timeTo!!.before(currentTime)) return false
 
-
         return true
-
     }
-
 }

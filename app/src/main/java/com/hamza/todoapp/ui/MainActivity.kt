@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), AddTaskDialog.OnInputListener {
     @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
-        val splash = installSplashScreen()
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity(), AddTaskDialog.OnInputListener {
             val addTaskDialog: AddTaskDialog = AddTaskDialog()
             addTaskDialog.show(supportFragmentManager, "tag")
         }
-
     }
 
     override fun sendInput(input: Task) {
@@ -50,6 +49,4 @@ class MainActivity : AppCompatActivity(), AddTaskDialog.OnInputListener {
     private fun addTask() {
         viewModel.insertTask(task)
     }
-
-
 }

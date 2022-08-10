@@ -20,7 +20,8 @@ class ViewPagerFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
@@ -51,7 +52,6 @@ class ViewPagerFragment : Fragment() {
                     1 -> setCompletedBackground()
                     2 -> setOverDueBackground()
                 }
-
             }
         })
 
@@ -66,7 +66,6 @@ class ViewPagerFragment : Fragment() {
         binding.overdueTab.setOnClickListener {
             setOverDueBackground()
         }
-
     }
 
     private fun setTodoBackground() {
@@ -104,5 +103,4 @@ class ViewPagerFragment : Fragment() {
             todoTab.setTextColor(R.color.tab_color)
         }
     }
-
 }

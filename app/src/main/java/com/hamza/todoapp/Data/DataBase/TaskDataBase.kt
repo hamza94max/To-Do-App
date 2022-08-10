@@ -13,7 +13,6 @@ import com.hamza.todoapp.Data.Models.Task
 )
 abstract class TaskDataBase : RoomDatabase() {
 
-
     abstract fun getTaskDao(): TaskDao
 
     companion object {
@@ -21,7 +20,6 @@ abstract class TaskDataBase : RoomDatabase() {
         @Volatile
         private var instance: TaskDataBase? = null
         private val LOCK = Any()
-
 
         operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
             instance ?: createDatabase(context).also { instance = it }
@@ -35,9 +33,5 @@ abstract class TaskDataBase : RoomDatabase() {
             )
                 .fallbackToDestructiveMigration()
                 .build()
-
-
     }
-
-
 }

@@ -18,6 +18,4 @@ interface CompletedTaskDao {
 
     @Query("DELETE FROM tasks")
     suspend fun deleteAllCompletedTasks()
-
-
 }

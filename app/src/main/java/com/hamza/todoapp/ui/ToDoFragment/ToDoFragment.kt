@@ -27,7 +27,8 @@ class ToDoFragment : Fragment() {
     private val completedTaskViewModel: CompletedTaskViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
@@ -43,14 +44,12 @@ class ToDoFragment : Fragment() {
         observeToLiveData()
 
         todoAdapter.setOnCheckBtnClickListener(object : OnCheckBoxClickListener {
-            override fun OnCheckBtnClicked(task: Task) {
+            override fun OnCheckBoxClicked(task: Task) {
                 todoViewModel.deleteTask(task)
                 completedTaskViewModel.insertCompletedTask(task)
                 Toast.makeText(context, "Completed ", Toast.LENGTH_LONG).show()
             }
-
         })
-
     }
 
     private fun setUpRecyclerView() {
@@ -63,9 +62,11 @@ class ToDoFragment : Fragment() {
 
     private fun observeToLiveData() {
         todoViewModel.getAllTasks.observe(viewLifecycleOwner) { tasks ->
-            todoAdapter.differ.submitList(tasks.reversed().filter {
-                getDifferentDays(it.date) > 0 || (getDifferentDays(it.date) == 0 && checkTime(it.time))
-            })
+            todoAdapter.differ.submitList(
+                tasks.reversed().filter {
+                    getDifferentDays(it.date) > 0 || (getDifferentDays(it.date) == 0 && checkTime(it.time))
+                }
+            )
             removeNoTaskLayout(tasks)
         }
     }
@@ -74,6 +75,4 @@ class ToDoFragment : Fragment() {
         if (tasks!!.isEmpty()) binding.noTaskLayout.visibility = View.VISIBLE
         else binding.noTaskLayout.visibility = View.GONE
     }
-
-
 }

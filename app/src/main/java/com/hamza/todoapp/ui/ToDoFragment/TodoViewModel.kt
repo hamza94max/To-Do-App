@@ -30,6 +30,4 @@ class TodoViewModel(application: Application) : AndroidViewModel(application) {
             repository.deleteAllTasks()
         }
     }
-
-
 }

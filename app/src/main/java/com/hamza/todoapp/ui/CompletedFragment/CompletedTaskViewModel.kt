@@ -30,6 +30,4 @@ class CompletedTaskViewModel(application: Application) : AndroidViewModel(applic
             repository.deleteAllCompletedTasks()
         }
     }
-
-
 }

@@ -2,9 +2,12 @@ package com.hamza.todoapp.Util
 
 import android.annotation.SuppressLint
 import android.os.Build
+import com.hamza.todoapp.Util.Constants.toDays
+import com.hamza.todoapp.Util.Constants.toHours
+import com.hamza.todoapp.Util.Constants.toMills
+import com.hamza.todoapp.Util.Constants.toMinute
 import java.text.SimpleDateFormat
 import java.util.*
-
 
 @SuppressLint("SimpleDateFormat")
 object DateChecker {
@@ -16,10 +19,10 @@ object DateChecker {
         val selectedDate: Date = sdf.parse(date) as Date
 
         val diff: Long = Date().time - selectedDate.time
-        val seconds = diff / 1000
-        val minutes = seconds / 60
-        val hours = minutes / 60
-        val days = hours / 24
+        val seconds = diff / toMills
+        val minutes = seconds / toMinute
+        val hours = minutes / toHours
+        val days = hours / toDays
 
         if (isEquals(date))
             return -days.toInt()
@@ -38,6 +41,4 @@ object DateChecker {
         }
         return !isEquals
     }
-
-
 }

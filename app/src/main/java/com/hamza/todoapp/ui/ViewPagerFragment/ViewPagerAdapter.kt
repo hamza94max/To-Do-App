@@ -11,7 +11,6 @@ class ViewPagerAdapter(
     lifecycle: Lifecycle
 ) : FragmentStateAdapter(fragmentManager, lifecycle) {
 
-
     override fun createFragment(position: Int): Fragment {
         return list[position]
     }

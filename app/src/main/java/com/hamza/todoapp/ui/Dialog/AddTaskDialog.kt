@@ -18,9 +18,7 @@ import com.hamza.todoapp.R
 import com.hamza.todoapp.Util.Priority
 import java.util.*
 
-
 class AddTaskDialog : DialogFragment() {
-
 
     interface OnInputListener {
         fun sendInput(input: Task)
@@ -61,11 +59,12 @@ class AddTaskDialog : DialogFragment() {
 
         val reminderSwitch = view.findViewById<Switch>(R.id.reminderSwitch)
 
-
         val addBtn = view.findViewById<Button>(com.hamza.todoapp.R.id.addBtn)
         addBtn.setOnClickListener {
-            if (title.text.isEmpty() || date.text.isEmpty() || timeEditText.text.isEmpty()
-                || radioGroup.isEmpty()
+            if (title.text.isEmpty() ||
+                date.text.isEmpty() ||
+                timeEditText.text.isEmpty() ||
+                radioGroup.isEmpty()
             )
                 Toast.makeText(activity, "Fill all views", Toast.LENGTH_LONG).show()
             else {
@@ -86,14 +85,12 @@ class AddTaskDialog : DialogFragment() {
             }
         }
 
-
         val cancelBtn = view.findViewById<Button>(com.hamza.todoapp.R.id.cancelBtn)
         cancelBtn.setOnClickListener {
             dialog!!.dismiss()
         }
 
         dialog!!.show()
-
 
         return view
     }
@@ -134,12 +131,9 @@ class AddTaskDialog : DialogFragment() {
                 when (view.id) {
                     R.id.timeOfTaskEditText -> (view as EditText).setText(selectedTime)
                 }
-
             }, hour, minute, true
         )
         timePickerDialog.setTitle("Select Time Of task")
         timePickerDialog.show()
     }
-
-
 }

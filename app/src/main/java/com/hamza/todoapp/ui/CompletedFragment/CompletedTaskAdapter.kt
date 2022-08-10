@@ -22,7 +22,6 @@ class CompletedTaskAdapter : RecyclerView.Adapter<CompletedTaskAdapter.TodoViewH
         override fun areContentsTheSame(oldItem: Task, newItem: Task): Boolean {
             return oldItem == newItem
         }
-
     }
 
     var differ = AsyncListDiffer(this, diffCallback)
@@ -44,7 +43,6 @@ class CompletedTaskAdapter : RecyclerView.Adapter<CompletedTaskAdapter.TodoViewH
         holder.binding.timeTextView.text = currentItem.time
         holder.binding.dateOfDayTextView.text = currentItem.date
         holder.binding.checkbox.isChecked = true
-
     }
 
     override fun getItemCount(): Int {

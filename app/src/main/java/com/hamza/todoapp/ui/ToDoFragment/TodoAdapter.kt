@@ -25,7 +25,6 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(), OnCheckB
         override fun areContentsTheSame(oldItem: Task, newItem: Task): Boolean {
             return oldItem == newItem
         }
-
     }
 
     var differ = AsyncListDiffer(this, diffCallback)
@@ -52,10 +51,8 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(), OnCheckB
             holder.binding.taskPriority.setBackgroundResource(R.drawable.priority_high)
 
         holder.binding.checkbox.setOnClickListener {
-            listener!!.OnCheckBtnClicked(differ.currentList[position])
+            listener!!.OnCheckBoxClicked(differ.currentList[position])
         }
-
-
     }
 
     override fun getItemCount(): Int {
@@ -66,7 +63,7 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(), OnCheckB
         TodoAdapter.listener = listener
     }
 
-    override fun OnCheckBtnClicked(task: Task) {}
+    override fun OnCheckBoxClicked(task: Task) {}
 
     companion object {
         var listener: OnCheckBoxClickListener? = null

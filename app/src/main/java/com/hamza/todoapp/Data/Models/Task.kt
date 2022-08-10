@@ -15,8 +15,12 @@ data class Task(
     val priority: Priority,
     var isReminder: Boolean
 ) : Serializable {
-    constructor(title: String, date: String, time: String, priority: Priority, isReminder: Boolean)
-            : this(0, title, date, time, priority, isReminder)
-
-
+    constructor(
+        title: String,
+        date: String,
+        time: String,
+        priority: Priority,
+        isReminder: Boolean
+    ) :
+            this(0, title, date, time, priority, isReminder)
 }

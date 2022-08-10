@@ -24,7 +24,8 @@ class OverDueFragment : Fragment() {
     private val overDueViewModel: TodoViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentOverDueBinding.inflate(layoutInflater, container, false)
@@ -37,7 +38,6 @@ class OverDueFragment : Fragment() {
         setUpRecyclerView()
 
         observeToLiveData()
-
     }
 
     private fun setUpRecyclerView() {
@@ -50,9 +50,13 @@ class OverDueFragment : Fragment() {
 
     private fun observeToLiveData() {
         overDueViewModel.getAllTasks.observe(viewLifecycleOwner) { tasks ->
-            overDueAdapter.differ.submitList(tasks.reversed().filter {
-                getDifferentDays(it.date) < 0 || (getDifferentDays(it.date) == 0 && !checkTime(it.time))
-            })
+            overDueAdapter.differ.submitList(
+                tasks.reversed().filter {
+                    getDifferentDays(it.date) < 0 || (getDifferentDays(it.date) == 0 && !checkTime(
+                        it.time
+                    ))
+                }
+            )
         }
     }
 }

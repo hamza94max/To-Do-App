@@ -18,7 +18,8 @@ class CompletedFragment : Fragment() {
     private val completedTaskViewModel: CompletedTaskViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCompletedBinding.inflate(layoutInflater, container, false)
@@ -30,8 +31,6 @@ class CompletedFragment : Fragment() {
 
         setUpRecyclerView()
         observeToLiveData()
-
-
     }
 
     private fun setUpRecyclerView() {

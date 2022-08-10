@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/toDoFragment"
-        android:name="com.hamza.todoapp.ui.ToDoFragment.ToDoFragment"
+        android:name="Hamza.todoapp.ui.ToDoFragment.ToDoFragment"
         android:label="fragment_todo"
         tools:layout="@layout/fragment_todo" />
 
     <fragment
         android:id="@+id/completedFragment"
-        android:name="com.hamza.todoapp.ui.CompletedFragment.CompletedFragment"
+        android:name="Hamza.todoapp.ui.CompletedFragment.CompletedFragment"
         android:label="fragment_completed"
         tools:layout="@layout/fragment_completed" />
 
     <fragment
         android:id="@+id/overDueFragment"
-        android:name="com.hamza.todoapp.ui.OverDueFragment.OverDueFragment"
+        android:name="Hamza.todoapp.ui.OverDueFragment.OverDueFragment"
         android:label="fragment_over_due"
         tools:layout="@layout/fragment_over_due" />
 
     <fragment
         android:id="@+id/viewPagerFragment"
-        android:name="com.hamza.todoapp.ui.ViewPagerFragment.ViewPagerFragment"
+        android:name="Hamza.todoapp.ui.ViewPagerFragment.ViewPagerFragment"
         android:label="fragment_view_pager"
         tools:layout="@layout/fragment_view_pager" />
 
