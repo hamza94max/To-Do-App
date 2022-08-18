@@ -28,7 +28,7 @@
             tools:targetApi="p" />
 
         <EditText
-            android:id="@+id/whatsTaskEditText"
+            android:id="@+id/titleOfTaskEditText"
             android:layout_width="303dp"
             android:layout_height="56dp"
             android:layout_below="@id/AddTaskTextView"
@@ -43,8 +43,8 @@
             android:id="@+id/dateOfTaskEditText"
             android:layout_width="140dp"
             android:layout_height="56dp"
-            android:layout_below="@id/whatsTaskEditText"
-            android:layout_alignStart="@+id/whatsTaskEditText"
+            android:layout_below="@id/titleOfTaskEditText"
+            android:layout_alignStart="@+id/titleOfTaskEditText"
             android:layout_marginStart="0dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/edittext_shape"
@@ -58,8 +58,8 @@
             android:id="@+id/timeOfTaskEditText"
             android:layout_width="140dp"
             android:layout_height="56dp"
-            android:layout_below="@id/whatsTaskEditText"
-            android:layout_alignEnd="@+id/whatsTaskEditText"
+            android:layout_below="@id/titleOfTaskEditText"
+            android:layout_alignEnd="@+id/titleOfTaskEditText"
             android:layout_marginStart="14dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="0dp"

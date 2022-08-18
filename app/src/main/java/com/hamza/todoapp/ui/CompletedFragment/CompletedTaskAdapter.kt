@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.hamza.todoapp.Data.Models.Task
 import com.hamza.todoapp.databinding.CompletedTaskItemBinding
+import javax.inject.Inject
 
-class CompletedTaskAdapter : RecyclerView.Adapter<CompletedTaskAdapter.TodoViewHolder>() {
+class CompletedTaskAdapter @Inject constructor() :
+    RecyclerView.Adapter<CompletedTaskAdapter.TodoViewHolder>() {
 
     inner class TodoViewHolder(val binding: CompletedTaskItemBinding) :
         RecyclerView.ViewHolder(binding.root)

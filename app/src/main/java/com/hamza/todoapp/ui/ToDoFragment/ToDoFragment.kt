@@ -15,14 +15,18 @@ import com.hamza.todoapp.Util.DateChecker.getDifferentDays
 import com.hamza.todoapp.Util.TimeChecker.checkTime
 import com.hamza.todoapp.databinding.FragmentTodoBinding
 import com.hamza.todoapp.ui.CompletedFragment.CompletedTaskViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @RequiresApi(Build.VERSION_CODES.O)
+@AndroidEntryPoint
 class ToDoFragment : Fragment() {
 
     private var _binding: FragmentTodoBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var todoAdapter: TodoAdapter
+    @Inject
+    lateinit var todoAdapter: TodoAdapter
     private val todoViewModel: TodoViewModel by viewModels()
     private val completedTaskViewModel: CompletedTaskViewModel by viewModels()
 
@@ -54,7 +58,6 @@ class ToDoFragment : Fragment() {
 
     private fun setUpRecyclerView() {
         binding.todoRecyclerView.apply {
-            todoAdapter = TodoAdapter()
             layoutManager = LinearLayoutManager(context)
             adapter = todoAdapter
         }

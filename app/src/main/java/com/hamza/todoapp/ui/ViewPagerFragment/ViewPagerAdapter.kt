@@ -4,8 +4,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import javax.inject.Inject
 
-class ViewPagerAdapter(
+class ViewPagerAdapter @Inject constructor(
     private val list: List<Fragment>,
     fragmentManager: FragmentManager,
     lifecycle: Lifecycle

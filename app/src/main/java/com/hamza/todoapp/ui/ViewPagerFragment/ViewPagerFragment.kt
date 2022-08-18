@@ -1,10 +1,12 @@
 package com.hamza.todoapp.ui.ViewPagerFragment
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.hamza.todoapp.R
@@ -12,8 +14,11 @@ import com.hamza.todoapp.databinding.FragmentViewPagerBinding
 import com.hamza.todoapp.ui.CompletedFragment.CompletedFragment
 import com.hamza.todoapp.ui.OverDueFragment.OverDueFragment
 import com.hamza.todoapp.ui.ToDoFragment.ToDoFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 @SuppressLint("ResourceAsColor")
+@RequiresApi(Build.VERSION_CODES.O)
+@AndroidEntryPoint
 class ViewPagerFragment : Fragment() {
 
     private var _binding: FragmentViewPagerBinding? = null

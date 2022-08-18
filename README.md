@@ -25,6 +25,7 @@ The architecture of this application relies and complies with the following poin
 
 # Languages and Tools
 * [Kotlin](https://kotlinlang.org/) - official programming language for Android development .
+* [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - dependency injection library .
 * [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - for asynchronous programming .
 * [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help you design robust, testable, and maintainable apps.
   - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - Data objects that notify views when the underlying database changes.

@@ -13,14 +13,18 @@ import com.hamza.todoapp.Util.DateChecker.getDifferentDays
 import com.hamza.todoapp.Util.TimeChecker.checkTime
 import com.hamza.todoapp.databinding.FragmentOverDueBinding
 import com.hamza.todoapp.ui.ToDoFragment.TodoViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @RequiresApi(Build.VERSION_CODES.O)
+@AndroidEntryPoint
 class OverDueFragment : Fragment() {
 
     private var _binding: FragmentOverDueBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var overDueAdapter: OverDueAdapter
+    @Inject
+    lateinit var overDueAdapter: OverDueAdapter
     private val overDueViewModel: TodoViewModel by viewModels()
 
     override fun onCreateView(
@@ -42,7 +46,6 @@ class OverDueFragment : Fragment() {
 
     private fun setUpRecyclerView() {
         binding.overDueRecyclerView.apply {
-            overDueAdapter = OverDueAdapter()
             layoutManager = LinearLayoutManager(context)
             adapter = overDueAdapter
         }

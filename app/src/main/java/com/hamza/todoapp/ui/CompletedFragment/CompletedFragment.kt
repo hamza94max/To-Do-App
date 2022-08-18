@@ -8,13 +8,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hamza.todoapp.databinding.FragmentCompletedBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class CompletedFragment : Fragment() {
 
     private var _binding: FragmentCompletedBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var completedTaskAdapter: CompletedTaskAdapter
+    @Inject
+    lateinit var completedTaskAdapter: CompletedTaskAdapter
     private val completedTaskViewModel: CompletedTaskViewModel by viewModels()
 
     override fun onCreateView(
@@ -35,7 +39,6 @@ class CompletedFragment : Fragment() {
 
     private fun setUpRecyclerView() {
         binding.completedRecyclerView.apply {
-            completedTaskAdapter = CompletedTaskAdapter()
             layoutManager = LinearLayoutManager(context)
             adapter = completedTaskAdapter
         }

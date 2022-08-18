@@ -11,8 +11,10 @@ import com.hamza.todoapp.Data.Models.Task
 import com.hamza.todoapp.R
 import com.hamza.todoapp.Util.Priority
 import com.hamza.todoapp.databinding.TaskItemBinding
+import javax.inject.Inject
 
-class TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(), OnCheckBoxClickListener {
+class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(),
+    OnCheckBoxClickListener {
 
     inner class TodoViewHolder(val binding: TaskItemBinding) :
         RecyclerView.ViewHolder(binding.root)
