@@ -10,6 +10,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.hamza.todoapp.Data.Models.Task
 import com.hamza.todoapp.databinding.ActivityMainBinding
 import com.hamza.todoapp.ui.Dialog.AddTaskDialog
+import com.hamza.todoapp.ui.Dialog.OnInputListener
 import com.hamza.todoapp.ui.ToDoFragment.TodoViewModel
 import com.jakewharton.threetenabp.AndroidThreeTen
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,7 +18,7 @@ import org.threeten.bp.LocalDate
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), AddTaskDialog.OnInputListener {
+class MainActivity : AppCompatActivity(), OnInputListener {
 
     private lateinit var binding: ActivityMainBinding
 

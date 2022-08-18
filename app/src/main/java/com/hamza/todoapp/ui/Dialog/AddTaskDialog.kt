@@ -1,7 +1,9 @@
 package com.hamza.todoapp.ui.Dialog
 
 import android.annotation.SuppressLint
-import android.app.*
+import android.app.Activity
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -30,20 +32,13 @@ class AddTaskDialog @Inject constructor() : DialogFragment() {
     private var _binding: AddTaskDialogBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        _binding = AddTaskDialogBinding.inflate(LayoutInflater.from(context))
-        return AlertDialog.Builder(requireActivity())
-            .setView(binding.root)
-            .create()
-    }
-
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view: View = inflater.inflate(R.layout.add_task_dialog, container, false)
+        _binding = AddTaskDialogBinding.inflate(LayoutInflater.from(context))
 
         dialog!!.window!!.setLayout(
             ViewGroup.LayoutParams.MATCH_PARENT,
@@ -88,7 +83,7 @@ class AddTaskDialog @Inject constructor() : DialogFragment() {
 
         dialog!!.show()
 
-        return view
+        return binding.root
     }
 
     fun taskDialogIsEmpty(): Boolean {
