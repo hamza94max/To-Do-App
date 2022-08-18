@@ -1,31 +1,41 @@
 package com.hamza.todoapp.ui.Dialog
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
+import android.app.*
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.*
+import android.widget.DatePicker
+import android.widget.EditText
+import android.widget.Toast
 import androidx.core.view.isEmpty
 import androidx.fragment.app.DialogFragment
 import com.hamza.todoapp.Data.Models.Task
 import com.hamza.todoapp.R
 import com.hamza.todoapp.Util.Priority
+import com.hamza.todoapp.databinding.AddTaskDialogBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
+import javax.inject.Inject
 
-class AddTaskDialog : DialogFragment() {
+@AndroidEntryPoint
+class AddTaskDialog @Inject constructor() : DialogFragment() {
 
-    interface OnInputListener {
-        fun sendInput(input: Task)
-    }
-
-    lateinit var listener: OnInputListener
+    private lateinit var listener: OnInputListener
     private lateinit var priority: Priority
+
+    private var _binding: AddTaskDialogBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        _binding = AddTaskDialogBinding.inflate(LayoutInflater.from(context))
+        return AlertDialog.Builder(requireActivity())
+            .setView(binding.root)
+            .create()
+    }
 
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreateView(
@@ -43,56 +53,49 @@ class AddTaskDialog : DialogFragment() {
         dialog!!.setCancelable(true)
         dialog!!.setContentView(R.layout.add_task_dialog)
 
-        val title = view.findViewById<EditText>(R.id.whatsTaskEditText)
-
-        val date = view.findViewById<EditText>(R.id.dateOfTaskEditText)
-        date.setOnClickListener {
+        binding.dateOfTaskEditText.setOnClickListener {
             openDatePickerDialog(it, requireActivity())
         }
 
-        val timeEditText = view.findViewById<EditText>(R.id.timeOfTaskEditText)
-        timeEditText.setOnClickListener {
+        binding.timeOfTaskEditText.setOnClickListener {
             showTimePicker(it, requireActivity())
         }
 
-        val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
-
-        val reminderSwitch = view.findViewById<Switch>(R.id.reminderSwitch)
-
-        val addBtn = view.findViewById<Button>(com.hamza.todoapp.R.id.addBtn)
-        addBtn.setOnClickListener {
-            if (title.text.isEmpty() ||
-                date.text.isEmpty() ||
-                timeEditText.text.isEmpty() ||
-                radioGroup.isEmpty()
-            )
+        binding.addBtn.setOnClickListener {
+            if (taskDialogIsEmpty())
                 Toast.makeText(activity, "Fill all views", Toast.LENGTH_LONG).show()
             else {
-                when (radioGroup.checkedRadioButtonId) {
+                when (binding.radioGroup.checkedRadioButtonId) {
                     R.id.lowRadiobtn -> priority = Priority.LOW
                     R.id.mediumRadiobtn -> priority = Priority.MEDIUM
                     R.id.highRadiobtn -> priority = Priority.HIGH
                 }
                 val task = Task(
-                    title.text.toString(),
-                    date.text.toString(),
-                    timeEditText.text.toString(),
+                    binding.titleOfTaskEditText.text.toString(),
+                    binding.dateOfTaskEditText.text.toString(),
+                    binding.timeOfTaskEditText.text.toString(),
                     priority,
-                    reminderSwitch.isChecked
+                    binding.reminderSwitch.isChecked
                 )
                 listener.sendInput(task)
                 dialog!!.dismiss()
             }
         }
 
-        val cancelBtn = view.findViewById<Button>(com.hamza.todoapp.R.id.cancelBtn)
-        cancelBtn.setOnClickListener {
+        binding.cancelBtn.setOnClickListener {
             dialog!!.dismiss()
         }
 
         dialog!!.show()
 
         return view
+    }
+
+    fun taskDialogIsEmpty(): Boolean {
+        return binding.titleOfTaskEditText.text.isEmpty() ||
+                binding.dateOfTaskEditText.text.isEmpty() ||
+                binding.timeOfTaskEditText.text.isEmpty() ||
+                binding.radioGroup.isEmpty()
     }
 
     override fun onAttach(context: Context) {

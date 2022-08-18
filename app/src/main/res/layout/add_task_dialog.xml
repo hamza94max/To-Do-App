@@ -28,7 +28,7 @@
             tools:targetApi="p" />
 
         <EditText
-            android:id="@+id/whatsTaskEditText"
+            android:id="@+id/titleOfTaskEditText"
             android:layout_width="303dp"
             android:layout_height="56dp"
             android:layout_below="@id/AddTaskTextView"

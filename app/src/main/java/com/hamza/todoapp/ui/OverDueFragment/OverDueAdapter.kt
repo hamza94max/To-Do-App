@@ -11,8 +11,10 @@ import com.hamza.todoapp.Data.Models.Task
 import com.hamza.todoapp.R
 import com.hamza.todoapp.Util.Priority
 import com.hamza.todoapp.databinding.OverdueItemBinding
+import javax.inject.Inject
 
-class OverDueAdapter : RecyclerView.Adapter<OverDueAdapter.OverDueViewHolder>() {
+class OverDueAdapter @Inject constructor() :
+    RecyclerView.Adapter<OverDueAdapter.OverDueViewHolder>() {
 
     inner class OverDueViewHolder(val binding: OverdueItemBinding) :
         RecyclerView.ViewHolder(binding.root)

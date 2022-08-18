@@ -12,13 +12,20 @@ import com.hamza.todoapp.databinding.ActivityMainBinding
 import com.hamza.todoapp.ui.Dialog.AddTaskDialog
 import com.hamza.todoapp.ui.ToDoFragment.TodoViewModel
 import com.jakewharton.threetenabp.AndroidThreeTen
+import dagger.hilt.android.AndroidEntryPoint
 import org.threeten.bp.LocalDate
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), AddTaskDialog.OnInputListener {
+
     private lateinit var binding: ActivityMainBinding
 
     private val viewModel: TodoViewModel by viewModels()
     private lateinit var task: Task
+
+    @Inject
+    lateinit var addTaskDialog: AddTaskDialog
 
     @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
@@ -36,7 +43,6 @@ class MainActivity : AppCompatActivity(), AddTaskDialog.OnInputListener {
         binding.dateOfDayTextView.text = "$dayName, $month, $year"
 
         binding.insertTaskbtn.setOnClickListener {
-            val addTaskDialog: AddTaskDialog = AddTaskDialog()
             addTaskDialog.show(supportFragmentManager, "tag")
         }
     }
