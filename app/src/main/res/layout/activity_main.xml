@@ -49,7 +49,7 @@
             app:navGraph="@navigation/nav_graph" />
 
         <Button
-            android:id="@+id/insertTaskbtn"
+            android:id="@+id/addTaskBtn"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_alignParentEnd="true"

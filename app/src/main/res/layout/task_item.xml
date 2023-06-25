@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:padding="21dp"
     android:layout_marginTop="8dp"
+    android:layout_marginRight="2dp"
     app:cardCornerRadius="8dp">
 
     <RelativeLayout
@@ -28,8 +29,9 @@
 
             <TextView
                 android:id="@+id/taskTitle"
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
                 android:layout_toEndOf="@id/taskPriority"
                 android:fontFamily="@font/poppins_semibold"
                 android:padding="7dp"
@@ -63,15 +65,18 @@
                 android:layout_marginStart="2dp"
                 android:layout_marginTop="-8dp"
                 android:padding="7dp"
-                android:src="@drawable/ic_baseline_calendar_month_24" />
+                android:src="@drawable/calendarview_todo" />
 
             <TextView
                 android:id="@+id/dateOfDayTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="0dp"
                 android:layout_toRightOf="@+id/calendarView"
                 android:fontFamily="@font/poppins_light"
                 android:text="@string/dateOfDay"
+                android:textColor="@color/blue"
                 android:textSize="14sp" />
 
             <ImageView
@@ -81,17 +86,18 @@
                 android:layout_below="@id/calendarView"
                 android:layout_marginStart="2dp"
                 android:padding="7dp"
-                android:src="@drawable/ic_baseline_access_time_24" />
+                android:src="@drawable/timeview_todo" />
 
             <TextView
                 android:id="@+id/timeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/dateOfDayTextView"
-                android:layout_marginTop="8dp"
+                android:layout_below="@+id/calendarView"
+                android:layout_marginTop="4dp"
                 android:layout_toEndOf="@id/timeView"
                 android:padding="2dp"
-                android:text="@string/time" />
+                android:text="@string/time"
+                android:textColor="@color/blue" />
 
             <RelativeLayout
                 android:id="@+id/reminderView"

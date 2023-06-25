@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.hamza.todoapp.Data.Models.Priority
 import com.hamza.todoapp.Data.Models.Task
 import com.hamza.todoapp.R
-import com.hamza.todoapp.Util.Priority
 import com.hamza.todoapp.databinding.TaskItemBinding
 import javax.inject.Inject
 
