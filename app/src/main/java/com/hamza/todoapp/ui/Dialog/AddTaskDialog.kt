@@ -15,9 +15,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.core.view.isEmpty
 import androidx.fragment.app.DialogFragment
+import com.hamza.todoapp.Data.Models.Priority
 import com.hamza.todoapp.Data.Models.Task
 import com.hamza.todoapp.R
-import com.hamza.todoapp.Util.Priority
 import com.hamza.todoapp.databinding.AddTaskDialogBinding
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
@@ -57,7 +57,7 @@ class AddTaskDialog @Inject constructor() : DialogFragment() {
         }
 
         binding.addBtn.setOnClickListener {
-            if (taskDialogIsEmpty())
+            if (isDialogEmpty())
                 Toast.makeText(activity, "Fill all views", Toast.LENGTH_LONG).show()
             else {
                 when (binding.radioGroup.checkedRadioButtonId) {
@@ -86,7 +86,7 @@ class AddTaskDialog @Inject constructor() : DialogFragment() {
         return binding.root
     }
 
-    fun taskDialogIsEmpty(): Boolean {
+    private fun isDialogEmpty(): Boolean {
         return binding.titleOfTaskEditText.text.isEmpty() ||
                 binding.dateOfTaskEditText.text.isEmpty() ||
                 binding.timeOfTaskEditText.text.isEmpty() ||

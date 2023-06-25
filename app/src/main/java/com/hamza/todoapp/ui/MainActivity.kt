@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), OnInputListener {
         val month = today.month
         binding.dateOfDayTextView.text = "$dayName, $month, $year"
 
-        binding.insertTaskbtn.setOnClickListener {
+        binding.addTaskBtn.setOnClickListener {
             addTaskDialog.show(supportFragmentManager, "tag")
         }
     }

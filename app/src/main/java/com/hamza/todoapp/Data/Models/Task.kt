@@ -2,7 +2,6 @@ package com.hamza.todoapp.Data.Models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.hamza.todoapp.Util.Priority
 import java.io.Serializable
 
 @Entity(tableName = "Tasks")
@@ -23,4 +22,10 @@ data class Task(
         isReminder: Boolean
     ) :
             this(0, title, date, time, priority, isReminder)
+}
+
+enum class Priority {
+    LOW,
+    MEDIUM,
+    HIGH;
 }
