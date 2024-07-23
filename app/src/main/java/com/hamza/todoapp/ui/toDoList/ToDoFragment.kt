@@ -11,9 +11,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.hamza.todoapp.base.BaseFragment
 import com.hamza.todoapp.databinding.FragmentTodoBinding
-import com.hamza.todoapp.ui.ToDoFragment.OnCheckBoxClickListener
-import com.hamza.todoapp.ui.ToDoFragment.TasksViewModel
-import com.hamza.todoapp.ui.ToDoFragment.TodoAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 import kotlinx.coroutines.launch
