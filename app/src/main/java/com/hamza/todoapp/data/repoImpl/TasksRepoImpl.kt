@@ -10,12 +10,16 @@ class TasksRepoImpl @Inject constructor(
     private val tasksDataBase: TasksDataBase
 ) : TasksRepo {
 
-    override suspend fun getTasks(): Flow<List<Task>> {
-        return tasksDataBase.getTaskDao().getTasks()
+    override suspend fun getTasks(currentDate: String): Flow<List<Task>> {
+        return tasksDataBase.getTaskDao().getTasks(currentDate)
     }
 
     override suspend fun getCompletedTasks(): Flow<List<Task>> {
         return tasksDataBase.getTaskDao().getCompletedTasks()
+    }
+
+    override suspend fun getOverDueTasks(currentDate: String): Flow<List<Task>> {
+        return tasksDataBase.getTaskDao().getOverdueTasks(currentDate)
     }
 
     override suspend fun insertTask(task: Task) {

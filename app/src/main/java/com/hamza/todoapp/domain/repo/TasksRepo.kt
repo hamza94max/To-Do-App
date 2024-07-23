@@ -6,9 +6,11 @@ import kotlinx.coroutines.flow.Flow
 interface TasksRepo {
 
 
-    suspend fun getTasks(): Flow<List<Task>>
+    suspend fun getTasks(currentDate: String): Flow<List<Task>>
 
     suspend fun getCompletedTasks(): Flow<List<Task>>
+
+    suspend fun getOverDueTasks(currentDate: String): Flow<List<Task>>
 
     suspend fun insertTask(task: Task)
 
