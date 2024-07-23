@@ -1,4 +1,4 @@
-package com.hamza.todoapp.Util
+package com.hamza.todoapp.utils
 
 import android.annotation.SuppressLint
 import android.os.Build

@@ -15,19 +15,19 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.core.view.isEmpty
 import androidx.fragment.app.DialogFragment
-import com.hamza.todoapp.Data.Models.Priority
-import com.hamza.todoapp.Data.Models.Task
 import com.hamza.todoapp.R
 import com.hamza.todoapp.databinding.AddTaskDialogBinding
+import com.hamza.todoapp.domain.models.Task
+import com.hamza.todoapp.domain.models.TaskPriority
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
+import java.util.Calendar
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class AddTaskDialog @Inject constructor() : DialogFragment() {
 
     private lateinit var listener: OnInputListener
-    private lateinit var priority: Priority
+    private lateinit var priority: TaskPriority
 
     private var _binding: AddTaskDialogBinding? = null
     private val binding get() = _binding!!
@@ -61,16 +61,17 @@ class AddTaskDialog @Inject constructor() : DialogFragment() {
                 Toast.makeText(activity, "Fill all views", Toast.LENGTH_LONG).show()
             else {
                 when (binding.radioGroup.checkedRadioButtonId) {
-                    R.id.lowRadiobtn -> priority = Priority.LOW
-                    R.id.mediumRadiobtn -> priority = Priority.MEDIUM
-                    R.id.highRadiobtn -> priority = Priority.HIGH
+                    R.id.lowRadiobtn -> priority = TaskPriority.LOW
+                    R.id.mediumRadiobtn -> priority = TaskPriority.MEDIUM
+                    R.id.highRadiobtn -> priority = TaskPriority.HIGH
                 }
                 val task = Task(
-                    binding.titleOfTaskEditText.text.toString(),
-                    binding.dateOfTaskEditText.text.toString(),
-                    binding.timeOfTaskEditText.text.toString(),
-                    priority,
-                    binding.reminderSwitch.isChecked
+                    title = binding.titleOfTaskEditText.text.toString(),
+                    date = binding.dateOfTaskEditText.text.toString(),
+                    time = binding.timeOfTaskEditText.text.toString(),
+                    priority = priority,
+                    isReminder = binding.reminderSwitch.isChecked,
+                    isCompleted = false
                 )
                 listener.sendInput(task)
                 dialog!!.dismiss()

@@ -9,10 +9,8 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.hamza.todoapp.Util.DateChecker.getDifferentDays
-import com.hamza.todoapp.Util.TimeChecker.checkTime
 import com.hamza.todoapp.databinding.FragmentOverDueBinding
-import com.hamza.todoapp.ui.ToDoFragment.TodoViewModel
+import com.hamza.todoapp.ui.ToDoFragment.TasksViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -25,7 +23,7 @@ class OverDueFragment : Fragment() {
 
     @Inject
     lateinit var overDueAdapter: OverDueAdapter
-    private val overDueViewModel: TodoViewModel by viewModels()
+    private val overDueViewModel: TasksViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,14 +50,14 @@ class OverDueFragment : Fragment() {
     }
 
     private fun observeToLiveData() {
-        overDueViewModel.getAllTasks.observe(viewLifecycleOwner) { tasks ->
-            overDueAdapter.differ.submitList(
-                tasks.reversed().filter {
-                    getDifferentDays(it.date) < 0 || (getDifferentDays(it.date) == 0 && !checkTime(
-                        it.time
-                    ))
-                }
-            )
-        }
+//        overDueViewModel.getAllTasks.observe(viewLifecycleOwner) { tasks ->
+//            overDueAdapter.differ.submitList(
+//                tasks.reversed().filter {
+//                    getDifferentDays(it.date) < 0 || (getDifferentDays(it.date) == 0 && !checkTime(
+//                        it.time
+//                    ))
+//                }
+//            )
+        // }
     }
 }

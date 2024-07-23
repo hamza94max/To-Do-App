@@ -1,13 +1,13 @@
-package com.hamza.todoapp.Util
+package com.hamza.todoapp.utils
 
 import android.annotation.SuppressLint
 import android.os.Build
-import com.hamza.todoapp.Util.Constants.toDays
-import com.hamza.todoapp.Util.Constants.toHours
-import com.hamza.todoapp.Util.Constants.toMills
-import com.hamza.todoapp.Util.Constants.toMinute
+import com.hamza.todoapp.utils.Constants.toDays
+import com.hamza.todoapp.utils.Constants.toHours
+import com.hamza.todoapp.utils.Constants.toMills
+import com.hamza.todoapp.utils.Constants.toMinute
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 
 @SuppressLint("SimpleDateFormat")
 object DateChecker {

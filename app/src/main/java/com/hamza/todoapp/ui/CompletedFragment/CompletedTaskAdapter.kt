@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.hamza.todoapp.Data.Models.Task
 import com.hamza.todoapp.databinding.CompletedTaskItemBinding
+import com.hamza.todoapp.domain.models.Task
 import javax.inject.Inject
 
 class CompletedTaskAdapter @Inject constructor() :

@@ -2,80 +2,67 @@ package com.hamza.todoapp.ui.ToDoFragment
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.fragment.app.Fragment
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.hamza.todoapp.Data.Models.Task
-import com.hamza.todoapp.Util.DateChecker.getDifferentDays
-import com.hamza.todoapp.Util.TimeChecker.checkTime
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.hamza.todoapp.base.BaseFragment
 import com.hamza.todoapp.databinding.FragmentTodoBinding
-import com.hamza.todoapp.ui.CompletedFragment.CompletedTaskViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
-class ToDoFragment : Fragment() {
-
-    private var _binding: FragmentTodoBinding? = null
-    private val binding get() = _binding!!
+class ToDoFragment : BaseFragment<FragmentTodoBinding>() {
 
     @Inject
     lateinit var todoAdapter: TodoAdapter
-    private val todoViewModel: TodoViewModel by viewModels()
-    private val completedTaskViewModel: CompletedTaskViewModel by viewModels()
+    private val tasksViewModel: TasksViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentTodoBinding
+        get() = FragmentTodoBinding::inflate
 
-        _binding = FragmentTodoBinding.inflate(layoutInflater, container, false)
-        return binding.root
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun prepareView(savedInstanceState: Bundle?) {
+        binding.todoRecyclerView.adapter = todoAdapter
 
-        setUpRecyclerView()
+        tasksViewModel.getTasks()
 
-        observeToLiveData()
+        setTasksData()
 
         todoAdapter.setOnCheckBtnClickListener(object : OnCheckBoxClickListener {
-            override fun OnCheckBoxClicked(task: Task) {
-                todoViewModel.deleteTask(task)
-                completedTaskViewModel.insertCompletedTask(task)
-                Toast.makeText(context, "Completed ", Toast.LENGTH_LONG).show()
+            override fun onCheckBoxClicked(taskID: Int) {
+                tasksViewModel.completeTask(taskID)
+                showSuccessToast("Completed")
             }
         })
     }
 
-    private fun setUpRecyclerView() {
-        binding.todoRecyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = todoAdapter
-        }
-    }
+    private fun setTasksData() {
 
-    private fun observeToLiveData() {
-        todoViewModel.getAllTasks.observe(viewLifecycleOwner) { tasks ->
-            todoAdapter.differ.submitList(
-                tasks.reversed().filter {
-                    getDifferentDays(it.date) > 0 || (getDifferentDays(it.date) == 0 && checkTime(it.time))
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                tasksViewModel.tasksFlow.collect { tasks ->
+                    Log.d("hamzaE", tasks.toString())
+                    if (tasks.isEmpty()) showNoTasksView()
+                    else {
+                        todoAdapter.differ.submitList(tasks)
+                        binding.noTaskLayout.isVisible = false
+                    }
                 }
-            )
-            removeNoTaskLayout(tasks)
+            }
         }
+
+
     }
 
-    private fun removeNoTaskLayout(tasks: List<Task>?) {
-        if (tasks!!.isEmpty()) binding.noTaskLayout.visibility = View.VISIBLE
-        else binding.noTaskLayout.visibility = View.GONE
+    private fun showNoTasksView() {
+        binding.noTaskLayout.isVisible = true
     }
 }

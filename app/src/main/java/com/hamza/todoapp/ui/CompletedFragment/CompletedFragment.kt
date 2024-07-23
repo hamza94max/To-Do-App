@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hamza.todoapp.databinding.FragmentCompletedBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,7 +18,6 @@ class CompletedFragment : Fragment() {
 
     @Inject
     lateinit var completedTaskAdapter: CompletedTaskAdapter
-    private val completedTaskViewModel: CompletedTaskViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,8 +43,8 @@ class CompletedFragment : Fragment() {
     }
 
     private fun observeToLiveData() {
-        completedTaskViewModel.getAllCompletedTasks.observe(viewLifecycleOwner) { completedtasks ->
-            completedTaskAdapter.differ.submitList(completedtasks.asReversed())
-        }
+//        completedTaskViewModel.getAllCompletedTasks.observe(viewLifecycleOwner) { completedtasks ->
+//            completedTaskAdapter.differ.submitList(completedtasks.asReversed())
+//        }
     }
 }

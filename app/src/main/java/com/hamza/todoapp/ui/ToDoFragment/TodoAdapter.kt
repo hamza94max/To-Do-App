@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.hamza.todoapp.Data.Models.Priority
-import com.hamza.todoapp.Data.Models.Task
 import com.hamza.todoapp.R
 import com.hamza.todoapp.databinding.TaskItemBinding
+import com.hamza.todoapp.domain.models.Task
+import com.hamza.todoapp.domain.models.TaskPriority
 import javax.inject.Inject
 
 class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(),
@@ -29,7 +29,7 @@ class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoV
         }
     }
 
-    var differ = AsyncListDiffer(this, diffCallback)
+    val differ = AsyncListDiffer(this, diffCallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoAdapter.TodoViewHolder {
         val view = TaskItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -47,13 +47,13 @@ class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoV
         if (!currentItem.isReminder)
             holder.binding.reminderView.visibility = View.GONE
 
-        if (currentItem.priority == Priority.MEDIUM)
+        if (currentItem.priority == TaskPriority.MEDIUM)
             holder.binding.taskPriority.setBackgroundResource(R.drawable.priority_medium)
-        else if (currentItem.priority == Priority.HIGH)
+        else if (currentItem.priority == TaskPriority.HIGH)
             holder.binding.taskPriority.setBackgroundResource(R.drawable.priority_high)
 
         holder.binding.checkbox.setOnClickListener {
-            listener!!.OnCheckBoxClicked(differ.currentList[position])
+            listener!!.onCheckBoxClicked(differ.currentList[position].id)
         }
     }
 
@@ -65,7 +65,7 @@ class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoV
         TodoAdapter.listener = listener
     }
 
-    override fun OnCheckBoxClicked(task: Task) {}
+    override fun onCheckBoxClicked(taskID: Int) {}
 
     companion object {
         var listener: OnCheckBoxClickListener? = null
