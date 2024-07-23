@@ -1,11 +1,9 @@
-package com.hamza.todoapp.ui.ToDoFragment
+package com.hamza.todoapp.ui.toDoList
 
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -13,30 +11,54 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.hamza.todoapp.base.BaseFragment
 import com.hamza.todoapp.databinding.FragmentTodoBinding
+import com.hamza.todoapp.ui.ToDoFragment.OnCheckBoxClickListener
+import com.hamza.todoapp.ui.ToDoFragment.TasksViewModel
+import com.hamza.todoapp.ui.ToDoFragment.TodoAdapter
 import dagger.hilt.android.AndroidEntryPoint
+
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
 class ToDoFragment : BaseFragment<FragmentTodoBinding>() {
 
     @Inject
-    lateinit var todoAdapter: TodoAdapter
+    lateinit var todoListAdapter: TodoAdapter
+
     private val tasksViewModel: TasksViewModel by viewModels()
 
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentTodoBinding
         get() = FragmentTodoBinding::inflate
 
-
     override fun prepareView(savedInstanceState: Bundle?) {
-        binding.todoRecyclerView.adapter = todoAdapter
 
+        setupRecyclerView()
+        setupObservers()
+        setupListeners()
         tasksViewModel.getTasks()
 
-        setTasksData()
+    }
 
-        todoAdapter.setOnCheckBtnClickListener(object : OnCheckBoxClickListener {
+    private fun setupRecyclerView() {
+        binding.todoRecyclerView.adapter = todoListAdapter
+    }
+
+    private fun setupObservers() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                tasksViewModel.tasksFlow.collect { tasks ->
+                    Log.d("hamzaE", tasks.toString())
+
+                    setNoTasksViewVisibility(tasks.isEmpty())
+                    todoListAdapter.differ.submitList(tasks)
+
+                }
+            }
+        }
+    }
+
+    private fun setupListeners() {
+        todoListAdapter.setOnCheckBtnClickListener(object : OnCheckBoxClickListener {
             override fun onCheckBoxClicked(taskID: Int) {
                 tasksViewModel.completeTask(taskID)
                 showSuccessToast("Completed")
@@ -44,25 +66,8 @@ class ToDoFragment : BaseFragment<FragmentTodoBinding>() {
         })
     }
 
-    private fun setTasksData() {
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                tasksViewModel.tasksFlow.collect { tasks ->
-                    Log.d("hamzaE", tasks.toString())
-                    if (tasks.isEmpty()) showNoTasksView()
-                    else {
-                        todoAdapter.differ.submitList(tasks)
-                        binding.noTaskLayout.isVisible = false
-                    }
-                }
-            }
-        }
-
-
+    private fun setNoTasksViewVisibility(isVisible: Boolean) {
+        binding.noTaskLayout.isVisible = isVisible
     }
 
-    private fun showNoTasksView() {
-        binding.noTaskLayout.isVisible = true
-    }
 }
