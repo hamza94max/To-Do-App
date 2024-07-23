@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/toDoFragment"
-        android:name="com.hamza.todoapp.ui.ToDoFragment.ToDoFragment"
+        android:name="com.hamza.todoapp.ui.toDoList.ToDoFragment"
         android:label="fragment_todo"
         tools:layout="@layout/fragment_todo" />
 
     <fragment
         android:id="@+id/completedFragment"
-        android:name="com.hamza.todoapp.ui.CompletedFragment.CompletedFragment"
+        android:name="com.hamza.todoapp.ui.completedTasks.CompletedFragment"
         android:label="fragment_completed"
         tools:layout="@layout/fragment_completed" />
 

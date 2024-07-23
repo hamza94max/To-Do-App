@@ -1,4 +1,4 @@
-package com.hamza.todoapp.ui.CompletedFragment
+package com.hamza.todoapp.ui.completedTasks
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -10,11 +10,22 @@ import com.hamza.todoapp.databinding.CompletedTaskItemBinding
 import com.hamza.todoapp.domain.models.Task
 import javax.inject.Inject
 
-class CompletedTaskAdapter @Inject constructor() :
-    RecyclerView.Adapter<CompletedTaskAdapter.TodoViewHolder>() {
+class CompletedTasksAdapter @Inject constructor() :
+    RecyclerView.Adapter<CompletedTasksAdapter.TodoViewHolder>() {
 
     inner class TodoViewHolder(val binding: CompletedTaskItemBinding) :
-        RecyclerView.ViewHolder(binding.root)
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun onBind(currentItem: Task) {
+
+            binding.apply {
+                taskTitle.text = currentItem.title
+                timeTextView.text = currentItem.time
+                dateOfDayTextView.text = currentItem.date
+                checkbox.isChecked = true
+            }
+        }
+    }
 
     private val diffCallback = object : DiffUtil.ItemCallback<Task>() {
         override fun areItemsTheSame(oldItem: Task, newItem: Task): Boolean {
@@ -26,25 +37,23 @@ class CompletedTaskAdapter @Inject constructor() :
         }
     }
 
-    var differ = AsyncListDiffer(this, diffCallback)
+    val differ = AsyncListDiffer(this, diffCallback)
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CompletedTaskAdapter.TodoViewHolder {
+    ): CompletedTasksAdapter.TodoViewHolder {
         val view =
             CompletedTaskItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TodoViewHolder(view)
     }
 
     @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(holder: CompletedTaskAdapter.TodoViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CompletedTasksAdapter.TodoViewHolder, position: Int) {
         val currentItem = differ.currentList[position]
 
-        holder.binding.taskTitle.text = currentItem.title
-        holder.binding.timeTextView.text = currentItem.time
-        holder.binding.dateOfDayTextView.text = currentItem.date
-        holder.binding.checkbox.isChecked = true
+        holder.onBind(currentItem)
+
     }
 
     override fun getItemCount(): Int {

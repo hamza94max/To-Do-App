@@ -11,9 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.hamza.todoapp.R
 import com.hamza.todoapp.databinding.FragmentViewPagerBinding
-import com.hamza.todoapp.ui.CompletedFragment.CompletedFragment
 import com.hamza.todoapp.ui.OverDueFragment.OverDueFragment
-import com.hamza.todoapp.ui.ToDoFragment.ToDoFragment
+import com.hamza.todoapp.ui.completedTasks.CompletedFragment
+import com.hamza.todoapp.ui.toDoList.ToDoFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @SuppressLint("ResourceAsColor")

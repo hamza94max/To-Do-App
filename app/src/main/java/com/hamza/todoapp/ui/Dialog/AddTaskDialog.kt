@@ -20,7 +20,9 @@ import com.hamza.todoapp.databinding.AddTaskDialogBinding
 import com.hamza.todoapp.domain.models.Task
 import com.hamza.todoapp.domain.models.TaskPriority
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -107,18 +109,25 @@ class AddTaskDialog @Inject constructor() : DialogFragment() {
         val cal: Calendar = Calendar.getInstance()
         val datePickerDialog = DatePickerDialog(
             activity,
-            { view: DatePicker?, year: Int, monthOfYear: Int, dayOfMonth: Int ->
-                var selectedDate = dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year
-                if (monthOfYear + 1 < 10) selectedDate =
-                    dayOfMonth.toString() + "/" + "0" + (monthOfYear + 1) + "/" + year
-                when (v.id) {
-                    R.id.dateOfTaskEditText -> (v as EditText).setText(selectedDate)
+            { _: DatePicker?, year: Int, monthOfYear: Int, dayOfMonth: Int ->
+                val selectedDate = Calendar.getInstance().apply {
+                    set(Calendar.YEAR, year)
+                    set(Calendar.MONTH, monthOfYear)
+                    set(Calendar.DAY_OF_MONTH, dayOfMonth)
                 }
-            }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val formattedDate = dateFormat.format(selectedDate.time)
+
+                when (v.id) {
+                    R.id.dateOfTaskEditText -> (v as EditText).setText(formattedDate)
+                }
+            },
+            cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)
         )
         datePickerDialog.datePicker.minDate = cal.timeInMillis - 1
         datePickerDialog.show()
     }
+
 
     private fun showTimePicker(view: View, activity: Activity) {
         val currentTime = Calendar.getInstance()

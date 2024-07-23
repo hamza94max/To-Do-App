@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
-    android:padding="21dp"
     android:layout_marginRight="2dp"
+    android:padding="21dp"
     app:cardCornerRadius="8dp">
 
     <RelativeLayout
@@ -46,11 +46,10 @@
                 android:layout_alignParentEnd="true"
                 android:layout_margin="8dp"
                 android:button="@drawable/checked"
+                android:checked="true"
                 android:clickable="false"
                 android:focusable="true"
-                android:text=""
-                android:padding="7dp"
-                android:checked="true" />
+                android:padding="7dp" />
 
         </RelativeLayout>
 

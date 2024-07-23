@@ -11,7 +11,6 @@ import com.hamza.todoapp.databinding.ActivityMainBinding
 import com.hamza.todoapp.domain.models.Task
 import com.hamza.todoapp.ui.Dialog.AddTaskDialog
 import com.hamza.todoapp.ui.Dialog.OnInputListener
-import com.hamza.todoapp.ui.ToDoFragment.TasksViewModel
 import com.jakewharton.threetenabp.AndroidThreeTen
 import dagger.hilt.android.AndroidEntryPoint
 import org.threeten.bp.LocalDate
