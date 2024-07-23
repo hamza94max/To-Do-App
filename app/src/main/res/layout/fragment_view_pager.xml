@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="8dp"
-    tools:context=".ui.ViewPagerFragment.ViewPagerFragment">
+    tools:context=".ui.viewPager.ViewPagerFragment">
 
 
     <RelativeLayout
@@ -29,6 +29,7 @@
                 android:background="@drawable/btn_blue_shape"
                 android:padding="7dp"
                 android:text="@string/todo"
+                android:fontFamily="@font/poppins_light"
                 android:textAllCaps="false"
                 android:textColor="@color/white" />
 
@@ -44,6 +45,7 @@
                 android:padding="7dp"
                 android:textAllCaps="false"
                 android:text="@string/complete"
+                android:fontFamily="@font/poppins_light"
                 android:textColor="@color/tab_color" />
 
             <Button
@@ -56,6 +58,7 @@
                 android:background="@drawable/btn_white_shape"
                 android:padding="7dp"
                 android:textAllCaps="false"
+                android:fontFamily="@font/poppins_light"
                 android:text="@string/overdue"
                 android:textColor="@color/tab_color" />
 

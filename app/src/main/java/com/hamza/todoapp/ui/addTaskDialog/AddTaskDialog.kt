@@ -1,4 +1,4 @@
-package com.hamza.todoapp.ui.Dialog
+package com.hamza.todoapp.ui.addTaskDialog
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -60,7 +60,7 @@ class AddTaskDialog @Inject constructor() : DialogFragment() {
 
         binding.addBtn.setOnClickListener {
             if (isDialogEmpty())
-                Toast.makeText(activity, "Fill all views", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "Fill all fields", Toast.LENGTH_LONG).show()
             else {
                 when (binding.radioGroup.checkedRadioButtonId) {
                     R.id.lowRadiobtn -> priority = TaskPriority.LOW
@@ -75,7 +75,7 @@ class AddTaskDialog @Inject constructor() : DialogFragment() {
                     isReminder = binding.reminderSwitch.isChecked,
                     isCompleted = false
                 )
-                listener.sendInput(task)
+                listener.onTaskAdded(task)
                 dialog!!.dismiss()
             }
         }

@@ -6,13 +6,12 @@
     android:minWidth="500dp"
     android:minHeight="480dp"
     android:layout_gravity="center"
-    android:padding="7dp">
+    android:padding="@dimen/_7sdp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        android:padding="14dp"
         tools:ignore="UseSwitchCompatOrMaterialXml">
 
         <TextView
@@ -29,55 +28,61 @@
 
         <EditText
             android:id="@+id/titleOfTaskEditText"
-            android:layout_width="303dp"
-            android:layout_height="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/AddTaskTextView"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/_16sdp"
             android:background="@drawable/edittext_shape"
             android:hint="@string/what_s_the_task"
             android:inputType="textAutoCorrect"
-            android:padding="7dp" />
+            android:padding="@dimen/_7sdp" />
 
-        <EditText
-            android:id="@+id/dateOfTaskEditText"
-            android:layout_width="140dp"
-            android:layout_height="56dp"
+
+        <LinearLayout
+            android:id="@+id/dateTimeLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
             android:layout_below="@id/titleOfTaskEditText"
             android:layout_alignStart="@+id/titleOfTaskEditText"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/edittext_shape"
-            android:clickable="false"
-            android:focusable="false"
-            android:hint="@string/date"
-            android:padding="7dp"
-            tools:targetApi="n" />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/timeOfTaskEditText"
-            android:layout_width="140dp"
-            android:layout_height="56dp"
-            android:layout_below="@id/titleOfTaskEditText"
-            android:layout_alignEnd="@+id/titleOfTaskEditText"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="0dp"
-            android:layout_toEndOf="@id/dateOfTaskEditText"
-            android:background="@drawable/edittext_shape"
-            android:clickable="false"
-            android:focusable="false"
-            android:hint="@string/timeOfTask"
-            android:padding="7dp"
-            android:pointerIcon="arrow"
-            tools:targetApi="n" />
+            <EditText
+                android:id="@+id/dateOfTaskEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_shape"
+                android:clickable="false"
+                android:focusable="false"
+                android:hint="@string/date"
+                android:padding="@dimen/_7sdp" />
+
+            <EditText
+                android:id="@+id/timeOfTaskEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_shape"
+                android:clickable="false"
+                android:focusable="false"
+                android:hint="@string/timeOfTask"
+                android:padding="@dimen/_7sdp"
+                android:pointerIcon="arrow" />
+
+
+        </LinearLayout>
+
 
         <View
             android:id="@+id/line_1"
             android:layout_width="304dp"
             android:layout_height="0dp"
-            android:layout_below="@id/dateOfTaskEditText"
-            android:layout_marginTop="32dp"
+            android:layout_below="@id/dateTimeLinearLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_16sdp"
             android:background="@drawable/line_1" />
 
         <TextView
@@ -85,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/line_1"
-            android:layout_alignStart="@+id/dateOfTaskEditText"
+            android:layout_alignStart="@+id/dateTimeLinearLayout"
             android:layout_marginStart="0dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/set_priority"
@@ -97,7 +102,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/setPriorityTextView"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <RadioButton
@@ -160,37 +166,41 @@
             android:textColor="@color/blue"
             android:textSize="16sp" />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_32sdp"
             android:layout_below="@id/reminderSwitch"
-            android:layout_marginTop="32dp"
-            android:padding="7dp">
+            android:orientation="horizontal"
+            android:padding="@dimen/_7sdp">
 
             <Button
                 android:id="@+id/cancelBtn"
-                android:layout_width="120dp"
-                android:layout_height="49dp"
-                android:layout_marginHorizontal="8dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:layout_weight="1"
                 android:background="@drawable/cancel_shape"
                 android:text="@string/cancel"
                 android:textAllCaps="false"
+                android:fontFamily="@font/poppins_light"
                 android:textColor="@color/blue_light"
-                android:textSize="16sp" />
+                android:textSize="@dimen/_14ssp" />
 
             <Button
                 android:id="@+id/addBtn"
-                android:layout_width="120dp"
-                android:layout_height="49dp"
-                android:layout_marginHorizontal="8dp"
-                android:layout_toEndOf="@id/cancelBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:layout_weight="1"
                 android:background="@drawable/add_btn_shape"
                 android:text="@string/add"
                 android:textAllCaps="false"
+                android:fontFamily="@font/poppins_light"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="@dimen/_14ssp" />
 
-        </RelativeLayout>
+        </LinearLayout>
 
 
     </RelativeLayout>

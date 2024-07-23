@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/viewPagerFragment"
-        android:name="com.hamza.todoapp.ui.ViewPagerFragment.ViewPagerFragment"
+        android:name="com.hamza.todoapp.ui.viewPager.ViewPagerFragment"
         android:label="fragment_view_pager"
         tools:layout="@layout/fragment_view_pager" />
 

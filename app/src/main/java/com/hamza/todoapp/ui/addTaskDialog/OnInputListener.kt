@@ -1,8 +1,9 @@
-package com.hamza.todoapp.ui.Dialog
+package com.hamza.todoapp.ui.addTaskDialog
 
 import com.hamza.todoapp.domain.models.Task
 
 interface OnInputListener {
-    fun sendInput(input: Task)
+
+    fun onTaskAdded(task: Task)
 
 }

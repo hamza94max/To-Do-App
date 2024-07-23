@@ -1,4 +1,4 @@
-package com.hamza.todoapp.ui.ViewPagerFragment
+package com.hamza.todoapp.ui.viewPager
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
