@@ -105,26 +105,22 @@
                 android:layout_height="35dp"
                 android:layout_below="@id/dateOfDayTextView"
                 android:layout_marginStart="140dp"
+                android:gravity="center"
                 android:layout_toEndOf="@id/timeTextView"
                 android:background="@drawable/reminder_shape"
-                android:padding="7dp">
+                android:padding="@dimen/_7sdp">
 
-                <ImageView
-                    android:id="@+id/alarmView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:layout_toStartOf="@id/reminderTextView"
-                    android:src="@drawable/ic_baseline_alarm_24" />
+
 
                 <TextView
                     android:id="@+id/reminderTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_margin="2dp"
+                    android:drawablePadding="@dimen/_4sdp"
+                    android:fontFamily="@font/poppins_light"
                     android:text="@string/reminder_on"
-                    android:textColor="@color/green" />
+                    android:textColor="@color/green"
+                    app:drawableStartCompat="@drawable/ic_baseline_alarm_24" />
 
 
             </RelativeLayout>
